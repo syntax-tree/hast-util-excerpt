@@ -8,7 +8,7 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**[hast][]** utility to excerpt the tree to a certain number of characters.
+**[hast][]** utility to truncate the tree to a comment.
 
 ## Install
 
@@ -72,7 +72,7 @@ There is no default export.
 
 ### `excerpt(tree, options?)`
 
-Excerpt the tree to a certain number of characters.
+Truncate the tree to a comment.
 
 ###### `options.comment`
 
@@ -93,7 +93,7 @@ These are not counted towards `size`.
 
 ###### Returns
 
-`Node` — Truncated copy of `tree`
+`Node?` — Truncated copy of `tree` if there’s a comment, `undefined` otherwise.
 
 ## Security
 
