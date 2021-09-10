@@ -25,7 +25,11 @@ test('hastUtilExcerpt', (t) => {
   t.deepEqual(
     excerpt(
       h('div', [
-        h('p', ['Lorem ipsum dolor sit amet.', u('comment', 'more'), 'Consectetur adipisicing elit.'])
+        h('p', [
+          'Lorem ipsum dolor sit amet.',
+          u('comment', 'more'),
+          'Consectetur adipisicing elit.'
+        ])
       ])
     ),
     h('div', [h('p', 'Lorem ipsum dolor sit amet.')]),
