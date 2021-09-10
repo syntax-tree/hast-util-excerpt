@@ -1,6 +1,6 @@
 {
   "name": "hast-util-excerpt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "hast utility to excerpt the tree to a comment",
   "license": "MIT",
   "keywords": [
