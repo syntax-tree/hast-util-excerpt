@@ -25,6 +25,16 @@ test('hastUtilExcerpt', (t) => {
   t.deepEqual(
     excerpt(
       h('div', [
+        h('p', ['Lorem ipsum dolor sit amet.', u('comment', 'more'), 'Consectetur adipisicing elit.'])
+      ])
+    ),
+    h('div', [h('p', 'Lorem ipsum dolor sit amet.')]),
+    'should copy to an excerpt comment inside a paragraph'
+  )
+
+  t.deepEqual(
+    excerpt(
+      h('div', [
         h('p', 'Lorem ipsum dolor sit amet.'),
         h('p', 'Consectetur adipisicing elit.')
       ])

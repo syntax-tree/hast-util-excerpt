@@ -78,13 +78,8 @@ export function excerpt(tree, options = {}) {
       const children = []
       let index = -1
 
-      while (++index < node.children.length) {
+      while (++index < node.children.length && !found) {
         const result = preorder(node.children[index])
-
-        if (found) {
-          break
-        }
-
         // @ts-expect-error: assume content model matches.
         if (result) children.push(result)
       }
