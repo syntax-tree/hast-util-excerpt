@@ -43,8 +43,8 @@
     "hast-util-select": "^5.0.0",
     "hastscript": "^7.0.0",
     "mdast-util-from-markdown": "^1.0.0",
-    "mdast-util-mdx": "^1.0.0",
-    "mdast-util-to-hast": "^11.0.0",
+    "mdast-util-mdx": "^2.0.0",
+    "mdast-util-to-hast": "^12.0.0",
     "micromark-extension-mdxjs": "^1.0.0",
     "prettier": "^2.0.0",
     "remark-cli": "^10.0.0",
@@ -55,7 +55,7 @@
     "typescript": "^4.0.0",
     "unist-builder": "^3.0.0",
     "unist-util-remove-position": "^4.0.0",
-    "xo": "^0.44.0"
+    "xo": "^0.49.0"
   },
   "scripts": {
     "prepack": "npm run build && npm run format",

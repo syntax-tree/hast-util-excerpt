@@ -50,21 +50,12 @@ export function excerpt(tree, options = {}) {
     }
 
     if (
-      // @ts-expect-error: integrate w/ `mdast-util-mdx`
       (node.type === 'mdxFlowExpression' ||
-        // @ts-expect-error
         node.type === 'mdxTextExpression') &&
-      // @ts-expect-error
       node.data &&
-      // @ts-expect-error
       node.data.estree &&
-      // @ts-expect-error
       node.data.estree.comments &&
-      // @ts-expect-error
-      node.data.estree.comments.some(
-        (/** @type {import('acorn').Comment} */ node) =>
-          node.value.trim() === comment
-      )
+      node.data.estree.comments.some((node) => node.value.trim() === comment)
     ) {
       found = true
       return
@@ -79,7 +70,8 @@ export function excerpt(tree, options = {}) {
       let index = -1
 
       while (++index < node.children.length && !found) {
-        const result = preorder(node.children[index])
+        const child = /** @type {Node} */ (node.children[index])
+        const result = preorder(child)
         // @ts-expect-error: assume content model matches.
         if (result) children.push(result)
       }

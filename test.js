@@ -91,7 +91,7 @@ test('hastUtilExcerpt', (t) => {
         removePosition(
           fromMarkdown('Some text\n\n{/* more */}\n\nSome more text', {
             extensions: [mdxjs()],
-            mdastExtensions: [mdxFromMarkdown]
+            mdastExtensions: [mdxFromMarkdown()]
           })
         ),
         {passThrough: ['mdxFlowExpression', 'mdxTextExpression', 'mdxjsEsm']}
