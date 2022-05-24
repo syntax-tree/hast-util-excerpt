@@ -8,22 +8,68 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**[hast][]** utility to truncate the tree to a comment.
+[hast][] utility to truncate the tree to a comment.
+
+## Contents
+
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`excerpt(tree, options?)`](#excerpttree-options)
+*   [Types](#types)
+*   [Compatibility](#compatibility)
+*   [Security](#security)
+*   [Related](#related)
+*   [Contribute](#contribute)
+*   [License](#license)
+
+## What is this?
+
+This package is a utility that takes a [hast][] (HTML) syntax tree and truncates
+it to a comment, while otherwise preserving the tree structure.
+
+## When should I use this?
+
+This is a small utility useful when you need to create a shorter version of a
+potentially long document, and want authors to be able to mark where that
+version ends.
+
+This utility is similar to [`hast-util-truncate`][hast-util-truncate], which
+truncates a tree to a certain number of characters.
+
+The rehype plugin
+[`rehype-infer-description-meta`][rehype-infer-description-meta]
+wraps both this utility and `hast-util-truncate` to figure out a description of
+a document, for use with [`rehype-meta`][rehype-meta].
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
-Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
-
-[npm][]:
+This package is [ESM only][esm].
+In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 
 ```sh
 npm install hast-util-excerpt
 ```
 
+In Deno with [`esm.sh`][esmsh]:
+
+```js
+import {excerpt} from "https://esm.sh/hast-util-excerpt@1"
+```
+
+In browsers with [`esm.sh`][esmsh]:
+
+```html
+<script type="module">
+  import {excerpt} from "https://esm.sh/hast-util-excerpt@1?bundle"
+</script>
+```
+
 ## Use
 
-Say we have the following module, `example.js`:
+Say our module `example.js` looks as follows:
 
 ```js
 import {u} from 'unist-builder'
@@ -41,7 +87,7 @@ const tree = h('p', [
 console.log(excerpt(tree));
 ```
 
-Now, running `node example.js` yields:
+…now running `node example.js` yields:
 
 ```js
 {
@@ -67,12 +113,16 @@ Now, running `node example.js` yields:
 
 ## API
 
-This package exports the following identifiers: `excerpt`.
+This package exports the identifier `excerpt`.
 There is no default export.
 
 ### `excerpt(tree, options?)`
 
 Truncate the tree to a comment.
+
+##### `options`
+
+Configuration (optional).
 
 ###### `options.comment`
 
@@ -93,23 +143,39 @@ These are not counted towards `size`.
 
 ###### Returns
 
-`Node?` — Truncated copy of `tree` if there’s a comment, `undefined` otherwise.
+Truncated copy of `tree` if there’s a comment, `undefined` otherwise (`Node?`).
+
+## Types
+
+This package is fully typed with [TypeScript][].
+It exports the additional type `Options`.
+
+## Compatibility
+
+Projects maintained by the unified collective are compatible with all maintained
+versions of Node.js.
+As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
+Our projects sometimes work with older versions, but this is not guaranteed.
 
 ## Security
 
 Use of `hast-util-excerpt` should be safe if the tree is already safe and
 you’re not using user content in options.
-When in doubt, use [`hast-util-sanitize`][sanitize].
+When in doubt, use [`hast-util-sanitize`][hast-util-sanitize].
 
 ## Related
 
 *   [`hast-util-truncate`](https://github.com/syntax-tree/hast-util-truncate)
-    — Truncate the tree to a certain number of characters
+    — truncate the tree to a number of characters
+*   [`rehype-infer-description-meta`][rehype-infer-description-meta]
+    — infer file metadata from the contents of the document
+*   [`rehype-meta`][rehype-meta]
+    — add metadata to the head of a document
 
 ## Contribute
 
-See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
-started.
+See [`contributing.md`][contributing] in [`syntax-tree/.github`][health] for
+ways to get started.
 See [`support.md`][support] for ways to get help.
 
 This project has a [code of conduct][coc].
@@ -150,16 +216,30 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[esmsh]: https://esm.sh
+
+[typescript]: https://www.typescriptlang.org
+
 [license]: license
 
 [author]: https://wooorm.com
 
-[contributing]: https://github.com/syntax-tree/.github/blob/HEAD/contributing.md
+[health]: https://github.com/syntax-tree/.github
 
-[support]: https://github.com/syntax-tree/.github/blob/HEAD/support.md
+[contributing]: https://github.com/syntax-tree/.github/blob/main/contributing.md
 
-[coc]: https://github.com/syntax-tree/.github/blob/HEAD/code-of-conduct.md
+[support]: https://github.com/syntax-tree/.github/blob/main/support.md
 
-[sanitize]: https://github.com/syntax-tree/hast-util-sanitize
+[coc]: https://github.com/syntax-tree/.github/blob/main/code-of-conduct.md
 
 [hast]: https://github.com/syntax-tree/hast
+
+[hast-util-sanitize]: https://github.com/syntax-tree/hast-util-sanitize
+
+[hast-util-truncate]: https://github.com/syntax-tree/hast-util-truncate
+
+[rehype-infer-description-meta]: https://github.com/rehypejs/rehype-infer-description-meta
+
+[rehype-meta]: https://github.com/rehypejs/rehype-meta
