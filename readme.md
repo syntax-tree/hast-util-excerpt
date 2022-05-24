@@ -88,7 +88,7 @@ won’t be found at the end.
 
 ###### `options.ignore`
 
-Nodes to exclude from the resulting tree (`Array.<Node>`).
+Nodes to exclude from the resulting tree (`Array<Node>`).
 These are not counted towards `size`.
 
 ###### Returns

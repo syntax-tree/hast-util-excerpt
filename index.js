@@ -14,7 +14,7 @@
  *   are assumed to be somewhat reasonably placed.
  *   This option prevents searching giant documents for some comment
  *   that probably won’t be found at the end.
- * @property {Content[]} [ignore=[]]
+ * @property {Array<Content>} [ignore=[]]
  *   Nodes to exclude from the resulting tree.
  *   These are not counted towards `size`.
  */
@@ -65,7 +65,7 @@ export function excerpt(tree, options = {}) {
     const replacement = {...node}
 
     if ('children' in node) {
-      /** @type {Content[]} */
+      /** @type {Array<Content>} */
       const children = []
       let index = -1
 
